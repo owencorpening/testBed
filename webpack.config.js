@@ -6,12 +6,16 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const HOST = process.env.HOST || "0.0.0.0";
 const PORT = process.env.PORT || "8888";
+const autoprefixer = require('autoprefixer');
+const precss = require('precss');
+const postcss = require('postcss');
+const postcssImport = require('postcss-import');
 
 module.exports = {
 	entry: [
 		`webpack-dev-server/client?http://${HOST}:${PORT}`, // WebpackDevServer host and port
 		`webpack/hot/only-dev-server`,
-		`./index.jsx` // Your appʼs entry point
+		`./src/index.jsx` // Your appʼs entry point
 	],
 	devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
 	output: {
@@ -36,7 +40,16 @@ module.exports = {
 		new webpack.NoErrorsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new CopyWebpackPlugin([
-			{from: './index.html'}
+			{from: './src/index.html'}
 		]),
-	]
+	],
+	postcss() {
+		return [
+			postcssImport({
+				addDependencyTo: webpack
+			}),
+			precss,
+			autoprefixer
+		];
+	}
 };

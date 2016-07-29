@@ -1,0 +1,33 @@
+{
+  "comments": [
+    {
+      "author": "john",
+      "date": "2016-07-23",
+      "commentText": "this is what I said",
+      "key": "1",
+      "replies": [
+        {
+          "author": "frank",
+          "date": "2016-07-23",
+          "commentText": "I replied thusly",
+          "key": "1"
+        },
+        {
+          "author": "dave",
+          "date": "2016-07-23",
+          "commentText": "I made an inflamatory statement",
+          "key": "2",
+          "replies": [
+            {
+              "author": "frank",
+              "date": "2016-07-24",
+              "commentText": "this is war",
+              "key": "1"
+            }
+          ]
+        }
+
+      ]
+    }
+  ]
+}
