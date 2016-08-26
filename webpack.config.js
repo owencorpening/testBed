@@ -23,11 +23,22 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx']
+		extensions: ['', '.js', '.jsx'],
+		alias: {
+			'sinon': 'sinon/pkg/sinon'
+		}
 	},
+	// preLoaders:
+	// {
+	// 	test: /\.json$/,
+	// 	loaders: ['json-loader']
+	// },
 	module: {
 		loaders
 	},
+	noParse: [
+		/node_modules\/sinon\//,
+	],
 	devServer: {
 		contentBase: "./public",
 			noInfo: true, //  --no-info option
@@ -51,5 +62,10 @@ module.exports = {
 			precss,
 			autoprefixer
 		];
+	},
+	externals: {
+		'react/addons': true, // important!!
+		'react/lib/ExecutionEnvironment': true,
+		'react/lib/ReactContext': true
 	}
 };

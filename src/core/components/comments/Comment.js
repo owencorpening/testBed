@@ -19,7 +19,7 @@ const Comment = (props) => {
 			}
 		);
 	}
-	let indentation = props.indentationLevel * 30 + "px";
+	let indentation = props.indentationLevel * 15 + "px";
 	let divStyle = {
 		marginLeft: indentation
 	};

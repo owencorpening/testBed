@@ -32,9 +32,19 @@ const config = {
             { test: /\.png$/, loader: 'url-loader', query: { mimetype: 'image/png' } },
             { test: /\.jpg$/, loader: 'url-loader', query: { mimetype: 'image/jpg' } },
             { test: /\.gif$/, loader: 'url-loader', query: { mimetype: 'image/gif' } },
-            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
+            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+						{ test: /\.json$/, loaders: ['json-loader']}
         ]
-    }
+    },
+		plugins: [
+			new webpack.IgnorePlugin(/react-addons/),
+			new webpack.IgnorePlugin(/react-dom/),
+		],
+		externals: {
+			'react/addons': true, // important!!
+			'react/lib/ExecutionEnvironment': true,
+			'react/lib/ReactContext': true
+		}
 };
 
 module.exports = config;
